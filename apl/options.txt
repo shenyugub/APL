@@ -1,0 +1,173 @@
+远程：
+
+ssh登陆
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install python-pip
+sudo apt-get install mysql-server
+sudo apt-get install vim
+sudo apt-get install supervisor
+sudo apt-get install python-dev
+sudo apt-get install python3-dev
+sudo apt-get install xfonts-utils #安装字体工具
+sudo apt-get install fontconfig
+pip install virtualenv
+mkdir Repository
+
+注意需要安装Python3.5版本以上
+
+vim  /etc/mysql/my.cnf：
+
+    [client]
+    default-character-set = utf8
+
+    [mysqld]
+    default-storage-engine = INNODB
+    character-set-server = utf8
+
+mysql -uroot -p
+	show variables like '%char%';
+	create database if not exists apl charset=utf8;
+	exit;
+
+cd /etc/supervisor/conf.d/
+vim apl.conf
+
+见配置文件备份
+
+
+sudo service supervisor restart
+
+sudo apt-get install nginx
+vim /etc/nginx/sites-available/default
+
+见配置文件备份
+
+sudo service nginx restart
+
+cd /root/apl
+export config='production'
+python3 manager.py init_db
+
+本机：
+改掉production.py文件的数据库密码
+
+fab build
+fab deploy
+
+远程：
+cd Repository
+virtualenv --python=python3 --no-site-packages venv
+source venv/bin/activate
+pip install -r ../apl/requirements.txt
+cd ../apl
+export config=production
+python manager.py init_db
+
+本机：
+fab build
+fab deploy
+
+
+操作supervisor的命令如下
+sudo supervisorctl reload
+sudo supervisorctl start apl
+sudo supervisorctl status
+
+
+
+
+
+----如果开启https则nginx配置文件如下写----
+server {
+        listen 80;
+        listen [::]:80 ssl ipv6only=on;
+        server_name     apl.apluslabs.com;
+        return 301 https://apl.apluslabs.com$request_uri;
+}
+
+server {
+                listen 443 default_server;
+                server_name apl.apluslabs.com;
+
+                ssl on;
+                ssl_certificate         /etc/nginx/sites-available/cert.pem;
+                ssl_certificate_key     /etc/nginx/sites-available/cert.key;
+                ssl_session_timeout 5m;
+                ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+                ssl_ciphers AESGCM:ALL:!DH:!EXPORT:!RC4:+HIGH:!MEDIUM:!LOW:!aNULL:!eNULL;
+                ssl_prefer_server_ciphers on;
+
+                root /root/apl/app;
+                index index.html index.htm;
+
+                access_log /root/Repository/nginx_access.log;
+                error_log  /root/Repository/nginx_error.log;
+
+                location ~ ^\/static\/.*$ {
+                        root /root/apl/app;
+                }
+
+                # 我们现在是投资人和创业者模块用模板，管理员模块前后端分离，单独渲染静态页面，然后JS请求服务端逻辑
+                location ~ ^\/admin\/.*$ {
+                        root /root/apl/app/templates;
+                }
+
+                location / {
+                        proxy_pass       http://127.0.0.1:5000;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+
+                        #如果想跨域，添加一下数据，修改后需要 service nginx reload
+                        add_header 'Access-Control-Allow-Origin' *;
+                        add_header 'Access-Control-Allow-Credentials' 'true';
+                        add_header 'Access-Control-Allow-Headers' 'Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,X-Requested-With';
+                        add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS';
+                }
+}
+
+
+# 创建备份数据库的账号
+create user backup@'%' identified by '123456'
+
+SELECT user, host FROM mysql.user_view;
+
+grant select, show view, lock tables, trigger, event on apl.* to backup@'%';
+
+show grants;
+
+flush privileges
+
+#查看数据库连接状态
+show processlist;
+
+
+# pip 批量更新
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+
+# pip 从官方源批量更新，上面的貌似可以忽略了
+pip install -r requirements.txt --upgrade -i https://pypi.python.org/simple/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
