@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=devive-width,initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../../static/css/admin_common.css">
+  <link rel="stylesheet" href="../../static/css/deliverable_detail.css">
+  <style>
+    .mone{
+      background:url(../../static/images/qian.png) no-repeat;
+      background-position:right center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+      <nav class="navbar head" role="navigation">               
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+            </div>
+            <div class="adminBox">
+              <div class="aBox"><span id="adminName">leizhongli</span></div> <span class="caret"></span>&nbsp;&nbsp;&nbsp;<a href="./index.html" id="quit">退出</a>
+            </div>
+        </nav>  
+    <div class="row content">
+      <div class="col-md-2 col-md-offset-1 lefts" style="padding-right:0">
+        <div class="row">
+          <div class="col-md-12 leftBot">
+            <ul class="ul">
+              <li>
+                用户管理
+              </li>
+              <ol>
+                <li><a href="./admin_list.html">会员列表<span>></span></a></li>
+                <li><a href="./admin_new.html">开通新账户<span>></span></a></li>
+            
+              </ol>
+              <li>
+                项目库               
+              </li>
+              <ol>
+                <li><a href="./project_list.html">项目列表<span>></span></a></li>
+                <li><a href="./stage_manage.html">阶段管理<span>></span></a></li>
+                <li><a href="./attachments.html">交付物管理<span>></span></a></li>
+                <li><a href="./comment_list.html">点评记录<span>></span></a></li>
+              </ol>
+              <li>
+                服务包管理               
+              </li>
+              <ol>
+                <li><a href="./service_category.html">服务包类别管理<span>></span></a></li>
+                <li><a href="./service_item.html">服务项管理<span>></span></a></li>  
+              </ol>
+              <li><a href="./service_custom.html">定制化需求管理</a></li>
+              <li><a href="./deliverable_list.html">交付物审核管理</a></li>
+              <li>
+                订单管理                
+              </li>
+              <ol>
+                <li><a href="./indent_list.html">订单列表<span>></span></a></li>
+              </ol>
+              <li>
+                交易管理                
+              </li>
+              <ol>
+                <li><a href="./bill_list.html">消费记录<span>></span></a></li>
+               </ol>
+              <li>
+                系统管理                
+              </li> 
+              <ol>
+                <li><a href="./managers.html">操作员管理<span>></span></a></li>
+                <li><a href="./department.html">部门管理<span>></span></a></li>
+                <li><a href="./role.html">角色管理<span>></span></a></li>
+                <li><a href="./permissions.html">权限管理<span>></span></a></li>
+                <li><a href="./settings.html">修改登录密码<span>></span></a></li>
+              </ol>
+              <li style="background:#2aabd2;"><a href="./bp_list.html" style="color:#fff">BP管理</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 rights" style="text-align:left;padding-left:1%">
+        <div class="col-md-12" style="margin-bottom:1.5%">
+                <input type="file" name="file" style="display:inline-block" id="files">
+          </div>
+        <div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%;margin-bottom:1%;margin-bottom:1%">
+          <h4 class="mes">团队信息</h4>
+          <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">项目名称：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="proName" maxlength="11">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">公司名称：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="comName" maxlength="11">
+              </div>
+          </div>
+          <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">预期融资额(万元)：</label>
+              <div class="col-sm-4">
+                  <input type="number" class="form-control num" id="expectMon">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">预期估值(万元)：</label>
+              <div class="col-sm-4">
+                  <input type="number" class="form-control num" id="expectApp">
+              </div>
+          </div>
+          <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">联系人：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="linkman" maxlength="11">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">联系人职位：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="linkPost" maxlength="11">
+              </div>
+          </div>
+          <div class="form-group texts"> 
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">联系方式：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="linkWay" maxlength="15">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">员工人数：</label>
+              <div class="col-sm-4">
+                  <input type="number" class="form-control num" id="employeesNum">
+              </div>
+          </div>
+          <div class="form-group texts">             
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">成立时间：</label>
+              <div class="col-sm-4">
+                  <input type="date" class="form-control" id="sTime" maxlength="20">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">所属城市：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="city" maxlength="11">
+              </div>
+          </div>
+          <div class="form-group texts">           
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">关联投资者：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="linkInvest" maxlength="11">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">关联机构：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="linkPort" maxlength="11">
+              </div>
+          </div>
+          <div class="form-group texts">           
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">项目来源：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="proSource" maxlength="11">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">所属行业：</label>
+              <div class="col-sm-4">
+                  <select id="industry" class="form-control" maxlength="11">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">关键词：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="keyword" maxlength="34">
+              </div>
+          </div>
+          <div class="form-group texts">
+            <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">一句话介绍：</label>
+             <div class="col-sm-10">
+                 <input type="text" class="form-control" id="dec" maxlength="34">
+             </div>
+          </div> 
+          <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">备注：</label>
+              <div class="col-sm-10">
+                <textarea id="remark" rows="3" style="width:100%"class="form-control"  maxlength="100"></textarea>
+              </div>
+          </div>
+        </div> 
+        <div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%;margin-bottom:1%;margin-bottom:1%">
+          <h4 class="mes">团队分析</h4>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">全职/兼职情况：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="condition" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">CEO：</label>
+              <div class="col-sm-10">
+                 <input type="text" class="form-control" id="ceo" maxlength="34">
+              </div> 
+            </div>
+            <div class="form-group texts">
+                <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">技术负责人：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="science" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+                 <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">市场负责人：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="market" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">行业资源：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="tradeRes" maxlength="34">
+              </div>
+              
+            </div>
+            <div class="form-group texts">
+                <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">目前股权结构：</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="organization" maxlength="34">
+                </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">团队描述及组成：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="teams" maxlength="34">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%;margin-bottom:1%">
+          <h4 class="mes">市场分析</h4>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">市场占有估算：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="marketOccupy" maxlength="11">
+              </div>
+               <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">市场容量：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="marketCapacity" maxlength="11">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">市场增量：</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" id="marketIncrement" maxlength="11">
+              </div>
+            </div>
+            <div class="form-group texts" style="margin-bottom:6%">
+                  <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">竞争对手分析：</label>
+                  <div class="col-sm-10">
+                      <textarea id="rival" rows="3" style="width:100%" class="form-control" maxlength="100"></textarea>
+                  </div>
+            </div>
+            <div class="form-group texts" style="margin-bottom:6%">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center;">痛点及需求描述：</label>
+              <div class="col-sm-10">
+                  <textarea id="requirement" rows="3" style="width:100%" class="form-control" maxlength="100"></textarea>
+              </div>
+            </div>
+            <div class="form-group texts">
+                  <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">我们的资源匹配情况：</label>
+                  <div class="col-sm-10">
+                      <textarea id="matching" rows="3" style="width:100%" class="form-control" maxlength="100"></textarea>
+                  </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%;margin-bottom:1%">
+          <h4 class="mes">投资亮点/关键技术</h4>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">产品形态：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="ProductForm" maxlength="34">
+              </div>
+               
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">主要营收来源：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="monSource" maxlength="34">
+              </div>
+              
+            </div>
+            <div class="form-group texts">
+                 <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">营收状况：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="monState" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">目标客户：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="targetCustomer" maxlength="34">
+              </div>
+              
+            </div>
+            <div class="form-group texts">
+               <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">获取用户方式：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userWay" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">核心技术：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="coreTechnology" maxlength="34">
+              </div>
+               
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">技术评估：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="technologyEval" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">核心资源：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="coreSource" maxlength="34">
+              </div>
+              
+            </div>
+            <div class="form-group texts">
+               <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">近期业务规划：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="businessPlan" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">中期业务规划：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="midBusinessPlan" maxlength="34">
+              </div>
+              
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">未来定位：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="futLocation" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">商业模式描述：</label>
+              <div class="col-sm-10">
+                 <textarea id="busDec" rows="3" class="form-control" maxlength="100"></textarea>
+              </div> 
+            </div> 
+          </div>
+
+          <div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%;margin-bottom:1%">
+          <h4 class="mes">融资/需求方案</h4>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">需求描述：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="requirementDescription" maxlength="34">
+              </div>
+              
+            </div>
+            <div class="form-group texts">
+               <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">需求依据：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="requirementBasis" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">融资计划：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="financingPlans" maxlength="34">
+              </div>
+               
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">财务预期营收：</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="finance" maxlength="34">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">风险及应对策略：</label>
+              <div class="col-sm-10">
+                  <textarea id="strategies" rows="3" class="form-control" style="width:100%" maxlength="100"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12" style="margin-top:0.5%;margin-bottom:1.5%">
+            <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">风险分析：</label>
+              <div class="col-sm-10"><!-- id="riskAnalysis" -->
+                  <textarea class="form-control" id="riskAnalysis" rows="3" style="width:100%" maxlength="100"></textarea>
+              </div>
+          </div>
+          <div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%;margin-bottom:1%">
+          <h4 class="mes">项目打分(10分制,无小数点)</h4>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">需求：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="needScore">
+              </div>
+               <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">行业：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="tradeScore">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">产品：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="proScore">
+              </div>
+               <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">团队：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="teamScore">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">资源：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="sourceScore">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">商业模式：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="busScore">
+              </div>
+            </div>
+            <div class="form-group texts">
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">估值：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="appraisementScore">
+              </div>
+              <label class="col-sm-2 control-label" style="padding-top:0.5%;text-align:center">风险：</label>
+              <div class="col-sm-4">
+                  <input type="number" min="0" max="10" class="form-control nums" id="riskScore">
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-12" style="text-align:center;margin-top:1%">
+            <input type="button" value="确认" class="btn btn-info" id="notarize">
+          </div>
+          
+      </div>
+    </div>
+    <div class="row footer">
+      <div class="col-md-12">
+        京审备案
+      </div>
+    </div> 
+  </div>
+  <script src="../../static/js/jquery-1.11.1.min.js"></script>  
+  <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../static/js/length.js"></script>
+  <script src="../../static/js/structure.js"></script>
+  <script src="../../static/js/leftBot.js"></script>
+  <script src="../../static/js/max.js"></script>
+  <script src="../../static/js/bp_manage.js"></script>
+  <script src="../../static/js/ban.js"></script>
+</body>
+</html>

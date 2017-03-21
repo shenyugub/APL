@@ -1,0 +1,38 @@
+.rightt {
+  padding-left: 5%;
+  text-align: left;
+  padding-bottom: 1%; }
+  .rightt h3 {
+    font-size: 25px;
+    padding-left: 1%; }
+
+.line {
+  height: 3px;
+  background: #ccc;
+  margin-left: 3%; }
+
+.rights p {
+  margin-top: 2%; }
+.rights label {
+  width: 15%;
+  text-align: right; }
+.rights span {
+  padding-left: 2%;
+  padding-right: 2%; }
+.rights input {
+  height: 30px; }
+.rights select {
+  height: 30px; }
+.rights #shaix {
+  margin-left: 3%;
+  margin-right: 1%; }
+
+table {
+  margin-top: 2%;
+  margin-left: 2%; }
+  table th {
+    text-align: center; }
+  table td {
+    text-align: center; }
+
+/*# sourceMappingURL=dazhangwu.css.map */

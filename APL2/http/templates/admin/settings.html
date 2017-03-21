@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/admin_common.css">	
+	<link rel="stylesheet" href="../../static/css/admin_list.css">	
+	<style>
+		.tsBox{
+				text-align:right;
+				color:red;
+				display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+   		<nav class="navbar head" role="navigation">               
+            <div class="navbar-header">
+            	<a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+            </div>
+            <div class="adminBox">
+            	<div class="aBox"><span id="adminName">leizhongli</span></div> <span class="caret"></span>&nbsp;&nbsp;&nbsp;<a href="./index.html" id="quit">退出</a>
+            </div>
+        </nav>  
+		<div class="row content">
+			<div class="col-md-2 col-md-offset-1 lefts" style="padding-right:0">
+				<div class="row">
+					<div class="col-md-12 leftBot">
+						<ul class="ul">
+							<li>
+								用户管理
+							</li>
+							<ol>
+								<li><a href="./admin_list.html">会员列表<span>></span></a></li>
+								<li><a href="./admin_new.html">开通新账户<span>></span></a></li>
+								
+							</ol>
+							<li>
+								项目库								
+							</li>
+							<ol>
+								<li><a href="./project_list.html">项目列表<span>></span></a></li>
+								<li><a href="./stage_manage.html">阶段管理<span>></span></a></li>
+								<li><a href="./attachments.html">交付物管理<span>></span></a></li>
+								<li><a href="./comment_list.html">点评记录<span>></span></a></li>
+							</ol>
+							<li>
+								服务包管理								
+							</li>
+							<ol>
+								<li><a href="./service_category.html">服务包类别管理<span>></span></a></li>
+								<li><a href="./service_item.html">服务项管理<span>></span></a></li>	
+							</ol>
+							<li><a href="./service_custom.html">定制化需求管理</a></li>
+							<li><a href="./deliverable_list.html">交付物审核管理</a></li>
+							<li>
+								订单管理								
+							</li>
+							<ol>
+								<li><a href="./indent_list.html">订单列表<span>></span></a></li>
+							</ol>
+							<li>
+								交易管理								
+							</li>
+							<ol>
+							 	<li><a href="./bill_list.html">消费记录<span>></span></a></li>
+							 </ol>
+							<li style="background:#2aabd2;color:#fff">
+								系统管理								
+							</li>	
+							<ol style="display:block">
+								<li><a href="./managers.html">操作员管理<span>></span></a></li>
+								<li><a href="./department.html">部门管理<span>></span></a></li>
+								<li><a href="./role.html">角色管理<span>></span></a></li>
+								<li><a href="./permissions.html">权限管理<span>></span></a></li>
+								<li style="background:#7bc0de"><a href="./settings.html" style="color:#fff">修改登录密码<span>></span></a></li>
+							</ol>
+							<li><a href="./bp_list.html">BP管理</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 rights" style="text-align:left">
+				<!-- 提示成功与否的框 -->
+				<div class="tooltips"></div>
+				<form class="form-horizontal" role="form">
+			  		<div class="form-group">
+    					<label class="col-sm-3 control-label">原密码：</label>
+   						<div class="col-sm-6">
+      						<input type="password" class="form-control pd" id="oldPsw">
+    					</div>	
+  					</div>
+  					<div class="form-group">
+    					<label class="col-sm-3 control-label">新密码：</label>
+   						<div class="col-sm-6">
+      						<input type="password" class="form-control pd" id="newPsw">
+    					</div>	
+  					</div>
+  					<div class="form-group">
+    					<label class="col-sm-3 control-label">重复新密码：</label>
+   						<div class="col-sm-6">
+      						<input type="password" class="form-control pd" id="repePsw">
+    					</div>	
+  					</div>
+  					<div class="col-sm-9 tsBox">两次输入密码不一致</div>
+                   	<div class="col-sm-10" style="text-align:center">
+                   		<input type="button" id="confirm" class="btn btn-info" style="padding-left:3%;padding-right:3%" value="确定修改">
+					</div>
+				</form>
+			</div>
+		</div>
+	 	<div class="row footer">
+			<div class="col-md-12">
+				京审备案
+			</div>
+		</div> 
+	</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/md5.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/leftBot.js"></script>
+	<script src="../../static/js/admin_settings.js"></script>
+	<script src="../../static/js/ban.js"></script>
+</body>
+</html>

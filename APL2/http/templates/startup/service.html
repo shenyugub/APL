@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/service.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="all">
+      		<p><a href="{{ url_for('startup.project_list') }}">个人中心</a></p>
+            <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+  	</div>
+		<nav class="navbar head" role="navigation">  			  
+   			<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            		<span class="sr-only">切换导航</span>
+           			<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+        		</button>
+        		<a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+   			</div>
+    		<div class="collapse navbar-collapse" id="example-navbar-collapse">
+        		<ul class="nav navbar-nav navbar-left ultop">
+            		<li><a href="{{ url_for('main.index') }}">首页</a></li>
+                <!-- <li><a href="#">业界新闻</a></li> -->
+                <li><a href="{{ url_for('startup.investor_list') }}">投资人</a></li>
+        		</ul>
+        		<div class="navbar-right spright">
+					<!-- <span>客户端</span> -->
+					<span id="emailId">{{ current_user('user').email }}</span>
+				</div>
+    			</div>	
+    </nav>  
+    <div class="row content">
+			  <div class="col-md-10 col-md-offset-1 main">
+				    <div class="col-md-12 sear">
+                  <input type="text" id="texts"><button class="btn btn-info" id="sea">搜索</button>
+                  <button id="custom" class="btn btn-info">定制化需求</button>
+				    </div>
+				    <div class="col-md-12 xmtop">
+					     <div class="col-md-12">
+						      <div class="col-md-2">项目阶段：</div>
+						      <div class="col-md-1 allChoose">全部</div>
+						      <div class="col-md-9 fl">
+							         <div class="col-md-2">堆叠评审阶段</div>
+							         <div class="col-md-2">设计评审阶段</div>
+							         <div class="col-md-2">工程样机评审阶段</div>
+							         <div class="col-md-2">批量试产评审</div>
+						      </div>
+					     </div>
+					     <div class="col-md-12">
+						      <div class="col-md-2">服务包类：</div>
+						      <div class="col-md-1 allChoose">全部</div>
+						      <div class="col-md-9 fl">
+							         <div class="col-md-2">APL系统服务</div>
+							         <div class="col-md-2">研发评审</div>
+							         <div class="col-md-2">开发支持</div>
+							         <div class="col-md-2">制造及供应链服务</div>
+							         <div class="col-md-2">硬创学院</div>
+							         <div class="col-md-2">媒介宣传</div>
+					       </div>
+				      </div>
+				    </div>
+				    <div class="col-md-12 xr">
+					     <div class="rightt">
+						        <h3>APL系统服务<span>提供线上项目管理服务、认证测试相关支持、指标质量标准制定</span></h3>
+					     </div>
+					     <div class="line"></div>
+					     <div class="xq" style="padding:0">
+						      <div class="col-md-12">
+							       <label class="col-md-5 control-label" >名称：</label>
+    						     <div class="col-md-7" >
+      							     <p class="form-control-static mc">APL系统支撑</p>
+    						      </div>
+						      </div>
+    					   <div class="col-md-12">
+    						      <label class="col-md-5 control-label">服务项：</label>
+    						      <div class="col-md-7">
+      							     <div class="form-control-static fwx">
+      								      <p>原力图评估</p>
+      								      <p>原力图评估</p>
+      								      <p>原力图评估</p>
+      								      <p>原力图评估</p>
+      							     </div>
+    						      </div>
+    					   </div>
+    					   <div class="col-md-12 xqBot">
+    						    服务下单
+    					   </div>
+					     </div>
+				    </div> 
+				    <div class="col-md-12 xr">
+					     <div class="rightt">
+						        <h3>研发评审<span>提供研发评审服务</span></h3>
+					     </div>
+					     <div class="line"></div>
+					     <div class="xq" style="padding:0">
+						          <div class="col-md-12">
+							            <label class="col-md-5 control-label" >名称：</label>
+    						          <div class="col-md-7" >
+      							           <p class="form-control-static mc">APL系统支撑</p>
+    						         </div>
+						        </div>
+						        <div class="col-md-12">
+    						        <label class="col-md-5 control-label" >阶段：</label>
+    						        <div class="col-md-7">
+      							        <p class="form-control-static mc">堆叠评审阶段</p>
+    						       </div>
+    					      </div>
+    					     <div class="col-md-12">
+    						        <label class="col-md-5 control-label">服务项：</label>
+    						        <div class="col-md-7">
+      							         <div class="form-control-static fwx">
+      								          <p>原力图评估</p>
+      								          <p>原力图评估</p>
+      								          <p>原力图评估</p>
+      								          <p>原力图评估</p>
+      							         </div>
+    						       </div>
+    					    </div>
+    					   <div class="col-md-12 xqBot">
+    						    服务下单
+    					   </div>
+					   </div>
+				</div>
+			 	<div class="col-md-12 xr">
+					<div class="rightt">
+						<h3>开发支持<span>提供软件App、硬件、结构等硬件项目的技术开发支持</span></h3>
+					</div>
+					<div class="line"></div>
+					<div class="xq" style="padding:0">
+						<div class="col-md-12">
+							<label class="col-md-5 control-label" >名称：</label>
+    						<div class="col-md-7" >
+      							<p class="form-control-static mc">APL系统支撑</p>
+    						</div>
+						</div>
+						<div class="col-md-12">
+    						<label class="col-md-5 control-label" >阶段：</label>
+    						<div class="col-md-7">
+      							<p class="form-control-static mc">堆叠评审阶段</p>
+    						</div>
+    					</div>
+    					<div class="col-md-12">
+    						<label class="col-md-5 control-label">服务项：</label>
+    						<div class="col-md-7">
+      							<div class="form-control-static fwx">
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      							</div>
+    						</div>
+    					</div>
+    					<div class="col-md-12 xqBot">
+    						服务下单
+    					</div>
+					</div>
+				</div> 
+				<div class="col-md-12 xr">
+					<div class="rightt">
+						<h3>制造及供应链服务<span>提供小批量制造服务、提供供应链资源对接、物料采购服务</span></h3>
+					</div>
+					<div class="line"></div>
+					<div class="xq" style="padding:0">
+						<div class="col-md-12">
+							<label class="col-md-5 control-label" >名称：</label>
+    						<div class="col-md-7" >
+      							<p class="form-control-static mc">APL系统支撑</p>
+    						</div>
+						</div>
+						<div class="col-md-12">
+    						<label class="col-md-5 control-label" >阶段：</label>
+    						<div class="col-md-7">
+      							<p class="form-control-static mc">堆叠评审阶段</p>
+    						</div>
+    					</div>
+    					<div class="col-md-12">
+    						<label class="col-md-5 control-label">服务项：</label>
+    						<div class="col-md-7">
+      							<div class="form-control-static fwx">
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      							</div>
+    						</div>
+    					</div>
+    					<div class="col-md-12 xqBot">
+    						服务下单
+    					</div>
+					</div>
+					<div class="xq" style="padding:0">
+						<div class="col-md-12">
+							<label class="col-md-5 control-label" >名称：</label>
+    						<div class="col-md-7" >
+      							<p class="form-control-static mc">APL系统支撑</p>
+    						</div>
+						</div>
+						<div class="col-md-12">
+    						<label class="col-md-5 control-label" >阶段：</label>
+    						<div class="col-md-7">
+      							<p class="form-control-static mc">堆叠评审阶段</p>
+    						</div>
+    					</div>
+    					<div class="col-md-12">
+    						<label class="col-md-5 control-label">服务项：</label>
+    						<div class="col-md-7">
+      							<div class="form-control-static fwx">
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      							</div>
+    						</div>
+    					</div>
+    					<div class="col-md-12 xqBot">
+    						服务下单
+    					</div>
+					</div>
+					<div class="xq" style="padding:0">
+						<div class="col-md-12">
+							<label class="col-md-5 control-label" >名称：</label>
+    						<div class="col-md-7" >
+      							<p class="form-control-static mc">APL系统支撑</p>
+    						</div>
+						</div>
+						<div class="col-md-12">
+    						<label class="col-md-5 control-label" >阶段：</label>
+    						<div class="col-md-7">
+      							<p class="form-control-static mc">堆叠评审阶段</p>
+    						</div>
+    					</div>
+    					<div class="col-md-12">
+    						<label class="col-md-5 control-label">服务项：</label>
+    						<div class="col-md-7">
+      							<div class="form-control-static fwx">
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      							</div>
+    						</div>
+    					</div>
+    					<div class="col-md-12 xqBot">
+    						服务下单
+    					</div>
+					</div>
+				</div>
+				<div class="col-md-12 xr">
+					<div class="rightt">
+						<h3>硬创学院<span>为创业团队提供技术知识培训服务</span></h3>
+					</div>
+					<div class="line"></div>
+					<div class="xq" style="padding:0">
+						<div class="col-md-12">
+							<label class="col-md-5 control-label" >名称：</label>
+    						<div class="col-md-7" >
+      							<p class="form-control-static mc">APL系统支撑</p>
+    						</div>
+						</div>
+						<div class="col-md-12">
+    						<label class="col-md-5 control-label" >阶段：</label>
+    						<div class="col-md-7">
+      							<p class="form-control-static mc">堆叠评审阶段</p>
+    						</div>
+    					</div>
+    					<div class="col-md-12">
+    						<label class="col-md-5 control-label">服务项：</label>
+    						<div class="col-md-7">
+      							<div class="form-control-static fwx">
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      							</div>
+    						</div>
+    					</div>
+    					<div class="col-md-12 xqBot">
+    						服务下单
+    					</div>
+					</div>
+				</div>
+				<div class="col-md-12 xr">
+					<div class="rightt">
+						<h3>媒介宣传<span>为创业团队提供媒体资源对接及宣传服务</span></h3>
+					</div>
+					<div class="line"></div>
+					<div class="xq" style="padding:0">
+						<div class="col-md-12">
+							<label class="col-md-5 control-label" >名称：</label>
+    						<div class="col-md-7" >
+      							<p class="form-control-static mc">APL系统支撑</p>
+    						</div>
+						</div>
+						<div class="col-md-12">
+    						<label class="col-md-5 control-label" >阶段：</label>
+    						<div class="col-md-7">
+      							<p class="form-control-static mc">堆叠评审阶段</p>
+    						</div>
+    					</div>
+    					<div class="col-md-12">
+    						<label class="col-md-5 control-label">服务项：</label>
+    						<div class="col-md-7">
+      							<div class="form-control-static fwx">
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      								<p>原力图评估</p>
+      							</div>
+    						</div>
+    					</div>
+    					<div class="col-md-12 xqBot">
+    						服务下单
+    					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <div class="row footer">
+      <div class="col-md-12">
+        京审备案
+      </div>
+    </div>
+	</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/serviceOne.js"></script>
+	<script src="../../static/js/mark.js"></script>
+</body>
+</html>

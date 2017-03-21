@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=devive-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../static/css/service_custom.css">
+    <link rel="stylesheet" href="../../static/css/common.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div id="all">
+        <p><a href="{{ url_for('startup.project_list') }}">个人中心</a></p>
+        <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+    </div>
+    <nav class="navbar head" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav navbar-left ultop">
+                <li><a href="{{ url_for('main.index') }}">首页</a></li>
+
+                <!-- <li><a href="#">业界新闻</a></li> -->
+                <li><a href="{{ url_for('startup.investor_list') }}">投资人</a></li>
+            </ul>
+            <div class="navbar-right spright">
+                <!-- <span>客户端</span> -->
+                <span id="emailId">{{ current_user('user').email }}</span>
+            </div>
+        </div>
+    </nav>
+    <div class="row content">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12 main">
+                <h4>定制化需求单</h4>
+                <form class="form-horizontal" role="form" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <div class="form-group">
+                        <label for="titles" class="col-sm-3 control-label">标题：</label>
+                        <div class="col-sm-6">
+                            {{ form.title(class="form-control", id="titles") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">需求分类：</label>
+                        <div class="col-sm-6">
+                            {{ form.category(class="form-control", id="xqfl") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="xqnr" class="col-sm-3 control-label">需求内容：</label>
+                        <div class="col-sm-6">
+                            {{ form.content(class="form-control", rows="3", id="xqnr", placeholder="请输入需求内容") }}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        {#			  					<a href="{{ url_for('startup.show_project', pid=pid) }}">#}
+                        {#			  					<button type="submit" id="submits" class="btn btn-info">#}
+                        {#									提交#}
+                        {#								</button>#}
+                        {#								</a>#}
+                        <button type="submit" id="submits" class="btn btn-info">
+                            提交
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-md-12">
+            京审备案
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery-1.11.1.min.js"></script>
+<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../static/js/structure.js"></script>
+<script src="../../static/js/mark.js"></script>
+</body>
+</html>

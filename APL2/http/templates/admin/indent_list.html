@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/easyui.css">
+	<link rel="stylesheet" href="../../static/css/icon.css">
+	<link rel="stylesheet" href="../../static/css/demo.css">
+	<link rel="stylesheet" href="../../static/css/admin_common.css">
+	<link rel="stylesheet" href="../../static/css/indent_list.css">
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>	
+	<script src="../../static/js/jquery.easyui.min.js"></script>
+	<style>
+		.form-control{
+			padding-top:3px;
+			padding-bottom:3px;
+			height:31px;
+		}
+	</style>
+</head>
+<body style="padding:0!important">
+	<div class="container-fluid">
+   		<nav class="navbar head" role="navigation">               
+            <div class="navbar-header">
+            	<a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+            </div>
+            <div class="adminBox">
+            	<div class="aBox"><span id="adminName">leizhongli</span></div> <span class="caret"></span>&nbsp;&nbsp;&nbsp;<a href="./index.html" id="quit">退出</a>
+            </div>
+        </nav>  
+		<div class="row content">
+			<div class="col-md-2 col-md-offset-1 lefts" style="padding-right:0">
+				<div class="row">
+					<div class="col-md-12 leftBot">
+						<ul class="ul">
+							<li>
+								用户管理
+							</li>
+							<ol>
+								<li><a href="./admin_list.html">会员列表<span>></span></a></li>
+								<li><a href="./admin_new.html">开通新账户<span>></span></a></li>
+								
+							</ol>
+							<li>
+								项目库								
+							</li>
+							<ol>
+								<li><a href="./project_list.html">项目列表<span>></span></a></li>
+								<li><a href="./stage_manage.html">阶段管理<span>></span></a></li>
+								<li><a href="./attachments.html">交付物管理<span>></span></a></li>
+								<li><a href="./comment_list.html">点评记录<span>></span></a></li>
+							</ol>
+							<li>
+								服务包管理								
+							</li>
+							<ol>
+								<li><a href="./service_category.html">服务包类别管理<span>></span></a></li>
+								<li><a href="./service_item.html">服务项管理<span>></span></a></li>	
+							</ol>
+							<li><a href="./service_custom.html">定制化需求管理</a></li>
+							<li><a href="./deliverable_list.html">交付物审核管理</a></li>
+							<li style="background:#2aabd2;color:#fff">
+								订单管理								
+							</li>
+							<ol style="display:block">
+								<li style="background:#7bc0de"><a href="./indent_list.html" style="color:#fff">订单列表<span>></span></a></li>
+							</ol>
+							<li>
+								交易管理								
+							</li>
+							<ol>
+							 	<li><a href="./bill_list.html">消费记录<span>></span></a></li>
+							 </ol>
+							<li>
+								系统管理								
+							</li>	
+							<ol>
+								<li><a href="./managers.html">操作员管理<span>></span></a></li>
+								<li><a href="./department.html">部门管理<span>></span></a></li>
+								<li><a href="./role.html">角色管理<span>></span></a></li>
+								<li><a href="./permissions.html">权限管理<span>></span></a></li>
+								<li><a href="./settings.html">修改登录密码<span>></span></a></li>
+							</ol>
+							<li><a href="./bp_list.html">BP管理</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 rights" style="text-align:left;padding-left:1%">
+				<form class="form-horizontal" role="form">
+			  		<div class="form-group">
+			    		<label class="col-sm-2 control-label">订单号：</label>
+			    		<div class="col-sm-3">
+			      			<input type="text" class="form-control" id="transaction">
+			    		</div>
+			    		<label class="col-sm-2 control-label">订单状态：</label>
+			    		<div style="padding-left:0" class="col-sm-5">
+			      			<select class="form-control" id="condition">
+      							<option value='请选择'>请选择</option>
+      							<option value='Ignoring'>请求忽略</option>
+      							<option value='Ignored'>已忽略</option>
+      							<option value='Rejected'>已驳回</option>
+      							<option value='Submitting'>待提交</option>
+      							<option value='Submitted'>已提交</option>
+      							<option value='Confirmed'>已确认</option>
+      							<option value='Finished'>已完成</option> 
+    						</select>
+			    		</div>
+			  		</div>
+			  		<div class="form-group">
+			    		<label class="col-sm-2 control-label">项目名称：</label>
+			    		<div class="col-sm-3">
+			      			<input type="text" class="form-control" id="proName">
+			    		</div>
+			    		<label class="col-sm-2 control-label">服务项：</label>
+			    		<div style="padding-left:0" class="col-sm-5">
+			      			<input type="text" class="form-control" id="services">
+			    		</div>
+			  		</div>
+			  		<div class="form-group">
+			  			<label class="col-sm-2 control-label">服务包名称：</label>
+			    		<div class="col-sm-3">
+			      			<input type="text" class="form-control" id="serName">
+			    		</div>
+			    		<label class="col-sm-2 control-label">服务包类：</label>
+			    		<div style="padding-left:0" class="col-sm-5">
+			      			<select class="form-control" id="sersort">
+      							<option value='请选择'>请选择</option>
+      							<option value='APL'>APL系统服务</option>
+      							<option value='Review'>研发评审</option>
+      							<option value='Development'>开发支持</option>
+      							<option value='Media'>媒体宣传</option>
+      							<option value='Others'>其他</option>
+    						</select>
+			    		</div>
+			  		</div>	
+			 		<div class="form-group">
+			    		
+			    		<label class="col-sm-2 control-label">下单日期：</label>
+			    		<div class="col-sm-6">
+			      			<input type="date" class="timer" id="startT"> 至 <input type="date" class="timer" id="endT">
+			    		</div>
+			  		</div>		
+			  		<div class="col-sm-12" style="text-align:center;margin-bottom:10px">
+			  			<input type="button" class="btn btn-info" id="search" value="查询">
+						<a href="" class="btn btn-info dc">导出</a>
+					</div>
+				</form>
+				<table class="easyui-datagrid"style="width:100%;height:auto;margin-right:1%" id="tt">					
+				</table>
+			</div>
+		</div>
+	 	<div class="row footer">
+			<div class="col-md-12">
+				京审备案
+			</div>
+		</div> 
+	</div>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/leftBot.js"></script>
+	<script src="../../static/js/indent_list.js"></script>
+</body>
+</html>

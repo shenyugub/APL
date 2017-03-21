@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../../static/css/admin_common.css">
+	<link rel="stylesheet" href="../../static/css/admin_new.css">
+  <style>
+    .cks .col-sm-3{
+        text-align:left;
+        padding:0;
+    }
+    .cks .col-sm-3 input{
+        margin-right:6%;
+    }
+     .cks .col-sm-3 label{
+        font-weight:normal;
+    }
+    .Tzcks .col-sm-3{
+        text-align:left;
+        padding:0;
+    }
+    .Tzcks .col-sm-3 input{
+        margin-right:6%;
+    }
+     .Tzcks .col-sm-3 label{
+        font-weight:normal;
+    }
+  </style>
+</head>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar head" role="navigation">               
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+            </div>
+            <div class="adminBox">
+              <div class="aBox"><span id="adminName">leizhongli</span></div> <span class="caret"></span>&nbsp;&nbsp;&nbsp;<a href="./index.html" id="quit">退出</a>
+            </div>
+        </nav> 
+    <div class="row content">
+      <div class="col-md-2 col-md-offset-1 lefts" style="padding-right:0">
+        <div class="row">
+          <div class="col-md-12 leftBot">
+            <ul class="ul">
+              <li style="background:#2aabd2;color:#fff">
+                用户管理
+              </li>
+              <ol style="display:block">
+                <li style="background:#7bc0de"><a href="./admin_list.html" style="color:#fff">会员列表<span>></span></a></li>
+                <li><a href="./admin_new.html">开通新账户<span>></span></a></li>
+              </ol>
+              <li>
+                项目库               
+              </li>
+              <ol>
+                <li><a href="./project_list.html">项目列表<span>></span></a></li>
+                <li><a href="./stage_manage.html">阶段管理<span>></span></a></li>
+                <li><a href="./attachments.html">交付物管理<span>></span></a></li>
+                <li><a href="./comment_list.html">点评记录<span>></span></a></li>
+              </ol>
+              <li>
+                服务包管理               
+              </li>
+              <ol>
+                <li><a href="./service_category.html">服务包类别管理<span>></span></a></li>
+                <li><a href="./service_item.html">服务项管理<span>></span></a></li>  
+              </ol>
+              <li><a href="./service_custom.html">定制化需求管理</a></li>
+              <li><a href="./deliverable_list.html">交付物审核管理</a></li>
+              <li>
+                订单管理                
+              </li>
+              <ol>
+                <li><a href="./indent_list.html">订单列表<span>></span></a></li>
+              </ol>
+              <li>
+                交易管理                
+              </li>
+              <ol>
+                <li><a href="./bill_list.html">消费记录<span>></span></a></li>
+               </ol>
+              <li>
+                系统管理                
+              </li> 
+              <ol>
+                <li><a href="./managers.html">操作员管理<span>></span></a></li>
+                <li><a href="./department.html">部门管理<span>></span></a></li>
+                <li><a href="./role.html">角色管理<span>></span></a></li>
+                <li><a href="./permissions.html">权限管理<span>></span></a></li>
+                <li><a href="./settings.html">修改登录密码<span>></span></a></li>
+              </ol>
+              <li><a href="./bp_list.html">BP管理</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+			  <div class="col-md-8 rights" style="text-align:left;padding-left:1%">
+				   <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">会员角色：</label>
+              <div class="col-sm-6">
+                  <select class="form-control" id="roles">
+                    <option value="Startup">项目方</option>
+                    <option value="Investor">投资人</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group">
+                  <label class="col-sm-3 control-label">姓名：</label>
+                  <div class="col-sm-6">
+                      <input type="text" class="form-control" id="name">
+                  </div> 
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">邮箱：</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control pd" id="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">手机号：</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">微信号：</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="wechat">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label">公司及职位：</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="company">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label">性别：</label>
+              <div class="col-sm-6">
+                  <label class="checkbox-inline">
+                      <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="Male" checked>男
+                  </label>
+                  <label class="checkbox-inline">
+                      <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="Female">女
+                  </label>
+              </div>
+          </div> 
+          <div class="form-group">
+              <label class="col-sm-3 control-label">个人简介：</label>
+              <div class="col-sm-6">
+                  <textarea class="form-control" rows="3" id="resume"></textarea>
+              </div>
+          </div>   
+          <div class="tabQ">
+            <div class="form-group">
+               <label class="col-sm-3 control-label">企业名称：</label>
+               <div class="col-sm-6">
+                   <input type="text" class="form-control" id="company_name">
+               </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">企业简介：</label>
+              <div class="col-sm-6">
+                  <textarea class="form-control" rows="3" id="company_desc"></textarea>
+              </div>
+            </div> 
+            <div class="form-group">
+                    <label class="col-sm-3 control-label">所属行业：</label>
+                    <div class="col-sm-6" style="text-align:left">
+                        <select class="form-control" id="company_industry">
+                          <option value="请选择">请选择</option>
+                          <option value="IntelligentMake">智能制造</option>
+                          <option value="IntelligentHardware">智能硬化</option>
+                          <option value="AI">人工智能</option>
+                          <option value="IoT">物联网</option>
+                          <option value="Sensor">传感技术</option>
+                          <option value="NewMaterial">新材料及新能源</option>
+                          <option value="ArVr">VR/AR</option>
+                          <option value="Drone">机器人/无人机</option>
+                          <option value="BigData">大数据</option>
+                          <option value="Medicine">医疗</option>
+                          <option value="Education">教育</option>
+                          <option value="Finance">金融</option>
+                          <option value="ConsumptionUpgrading">消费升级</option>
+                          <option value="O2O">O2O</option>
+                          <option value="BlackTechnology">黑科技</option>
+                          <option value="Others">其他行业</option>
+                        </select>
+                    </div>
+            </div>
+          </div>
+          <div class="tabQ" style="display:none">
+              <div class="form-group">
+                  <label class="col-sm-3 control-label">关注领域：</label>
+                  <div class="col-sm-9 cks">
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="zz" value="IntelligentMake"><label for="zz">智能制造</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="yj" value="IntelligentHardware"><label for="yj">智能硬件</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="rg" value="AI"><label for="rg">人工智能</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="net" value="IoT"><label for="net">物联网</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="cgjs" value="Sensor"><label for="cgjs">传感技术</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="ny" value="NewMaterial"><label for="ny">新材料及新能源</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="vr" value="ArVr"><label for="vr">VR/AR</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="jqr" value="Drone"><label for="jqr">机器人/无人机</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="dsj" value="BigData"><label for="dsj">大数据</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="yl" value="Medicine"><label for="yl">医疗</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="jy" value="Education"><label for="jy">教育</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="jr" value="Finance"><label for="jr">金融</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="o2o" value="O2O"><label for="o2o">O2O</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="hkj" value="BlackTechnology"><label for="hkj">黑科技</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="xfsj" value="ConsumptionUpgrading"><label for="xfsj">消费升级</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck" id="other" value="Others"><label for="other">其他行业</label>
+                     </span> 
+                  </div>
+               </div>
+              <div class="form-group">
+                    <label class="col-sm-3 control-label">投资身份：</label>
+                    <div class="col-sm-6" style="text-align:left">
+                        <select class="form-control" id="invest_role">
+                          <option value="请选择">请选择</option>
+                          <option value="Individual">个人</option>
+                          <option value="Organization">机构</option>
+                        </select>
+                    </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-sm-3 control-label">投资额度(万)：</label>
+                  <div class="col-sm-6">
+                      <input type="number" id="investment_min" placeholder="最小值" min="0" class="bjs"><input type="number" id="investment_max" placeholder="最大值" min="0" class="bjs">
+                  </div>      
+              </div>
+              <div class="form-group">
+                    <label class="col-sm-3 control-label">投资阶段：</label>
+                    <div class="col-sm-9 Tzcks">
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="zz1" value="Seed"><label for="zz1">种子轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="yj1" value="Angel"><label for="yj1">天使轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="rg1" value="PreA"><label for="rg1">Pre-A轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="net1" value="RoundA"><label for="net1">A 轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="cgjs1" value="RoundB"><label for="cgjs1">B 轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="ny1" value="RoundC"><label for="ny1">C 轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="vr1" value="RoundD"><label for="vr1">D 轮</label>
+                     </span> 
+                     <span class="col-sm-3">
+                        <input type="checkbox" name="ck1" id="jqr1" value="RoundE"><label for="jqr1">E 轮</label>
+                     </span> 
+                  </div>
+                    
+              </div>     
+          </div>
+          <div class="col-sm-12" style="text-align:center">   
+                  <button type="button" class="btn btn-info" id="ktzh">
+                        修改
+                  </button>               
+          </div>
+        </form>
+			</div>
+		</div>
+    <div class="row footer">
+      <div class="col-md-12">
+        京审备案
+      </div>
+    </div>
+	</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+  <script src="../../static/js/leftBot.js"></script>
+  <script src="../../static/js/serviceOne.js"></script>
+	<script src="../../static/js/admin_edit.js"></script>
+ 
+</body>
+</html>

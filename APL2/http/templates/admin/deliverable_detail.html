@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/admin_common.css">
+	<link rel="stylesheet" href="../../static/css/deliverable_detail.css">
+</head>
+<body>
+	<div class="mark"></div>
+	<div id="tck">
+		<h5>备注<img src="../../static/images/close.png" id="close"></h5>
+		<div class="te">
+			<textarea  rows="5" style="width:100%;" placeholder="aaaaaaa" id="txt"></textarea>
+		</div>
+		<button id="dpBtn" class="btn btn-info">提交</button>
+	</div>
+	<div class="container-fluid">
+   		<nav class="navbar head" role="navigation">               
+            <div class="navbar-header">
+            	<a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+            </div>
+            <div class="adminBox">
+            	<div class="aBox"><span id="adminName">leizhongli</span></div> <span class="caret"></span>&nbsp;&nbsp;&nbsp;<a href="./index.html" id="quit">退出</a>
+            </div>
+        </nav>  
+		<div class="row content">
+			<div class="col-md-2 col-md-offset-1 lefts" style="padding-right:0">
+				<div class="row">
+					<div class="col-md-12 leftBot">
+						<ul class="ul">
+							<li>
+								用户管理
+							</li>
+							<ol>
+								<li><a href="./admin_list.html">会员列表<span>></span></a></li>
+								<li><a href="./admin_new.html">开通新账户<span>></span></a></li>
+							
+							</ol>
+							<li>
+								项目库								
+							</li>
+							<ol>
+								<li><a href="./project_list.html">项目列表<span>></span></a></li>
+								<li><a href="./stage_manage.html">阶段管理<span>></span></a></li>
+								<li><a href="./attachments.html">交付物管理<span>></span></a></li>
+								<li><a href="./comment_list.html">点评记录<span>></span></a></li>
+							</ol>
+							<li>
+								服务包管理								
+							</li>
+							<ol>
+								<li><a href="./service_category.html">服务包类别管理<span>></span></a></li>
+								<li><a href="./service_item.html">服务项管理<span>></span></a></li>	
+							</ol>
+							<li><a href="./service_custom.html">定制化需求管理</a></li>
+							<li style="background:#2aabd2;"><a href="./deliverable_list.html" style="color:#fff">交付物审核管理</a></li>
+							<li>
+								订单管理								
+							</li>
+							<ol>
+								<li><a href="./indent_list.html">订单列表<span>></span></a></li>
+							</ol>
+							<li>
+								交易管理								
+							</li>
+							<ol>
+							 	<li><a href="./bill_list.html">消费记录<span>></span></a></li>
+							 </ol>
+							<li>
+								系统管理								
+							</li>	
+							<ol>
+								<li><a href="./managers.html">操作员管理<span>></span></a></li>
+								<li><a href="./department.html">部门管理<span>></span></a></li>
+								<li><a href="./role.html">角色管理<span>></span></a></li>
+								<li><a href="./permissions.html">权限管理<span>></span></a></li>
+								<li><a href="./settings.html">修改登录密码<span>></span></a></li>
+							</ol>
+							<li><a href="./bp_list.html">BP管理</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 rights" style="text-align:left;padding-left:1%">
+				<h3>反馈详情</h3>
+				<div style="border-bottom:1px dashed #ccc;padding-top:1%;padding-bottom:1%;width:30%">
+					<span>项目名称:</span>
+					<span style="padding-left:20px">酷停</span>
+				</div>
+				<div style="border-bottom:1px dashed #ccc;padding-top:1%;padding-bottom:1%;margin-bottom:1%;width:30%">
+					<span>阶段:</span>
+					<span style="padding-left:20px">概念阶段</span>
+				</div>
+				<table class="table table-hover table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>
+									交付物
+								</th>
+								<th>
+									描述
+								</th>
+								<th>
+									状态
+								</th>
+								<th>
+									操作
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									可行性报告
+								</td>
+								<td>
+									可行性报告可行性报告可行性报告
+								</td>
+								<td>
+									请求审核
+									<button class="xz">下载</button>
+								</td>
+								<td>
+									<button class="tz">通过</button> <button class="bh">驳回</button> <button class="bz">备注</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									可行性报告
+								</td>
+								<td>
+									可行性报告可行性报告可行性报告
+								</td>
+								<td>
+									请求忽略
+								</td>
+								<td>
+									<button class="tz">已通过</button> <button class="bh">已驳回</button> <button class="bz">备注</button>
+								</td>
+							</tr>
+							
+						</tbody>
+				</table>
+				<div class="col-md-12" style="border:1px solid #ccc;padding-bottom:2%">
+					<h4 class="mes">消息</h4>
+					<div class="col-md-12" style="margin-bottom:2%">
+						<div class="col-md-1 logoer">
+							<img src="../../static/images/product.jpeg" alt="">
+						</div>
+						<div class="col-md-10" style="padding-left:2%;padding-top:1%; border-bottom:1px dashed #ccc">
+							<div class="col-md-9" style="margin-bottom:1%">你好你好你好你好你好你好</div>
+							<div class="col-md-9" style="margin-bottom:1%">2016-12-28 10:10:10</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-1 logoer" style="margin-bottom:2%">
+							<img src="../../static/images/product.jpeg" alt="">
+						</div>
+						<div class="col-md-10" style="padding-left:2%;padding-top:1%; border-bottom:1px dashed #ccc">
+							<div class="col-md-9" style="margin-bottom:1%">你好你好你好你好你好你好</div>
+							<div class="col-md-9" style="margin-bottom:1%">2016-12-28 10:10:10</div>
+						</div>
+					</div>	
+				</div>
+
+				<div class="col-md-12" style="margin-top:2%; border:1px solid #ccc;padding-bottom:2%">
+					<h4 class="mes">工作面板</h4>
+					<div class="col-md-11">
+						<div class="col-md-3" style="margin-bottom:1%;text-align:center">留言：</div>
+						<div class="col-md-9" style="margin-bottom:1%"><textarea name="" id="lyTxt" rows="5" style="width:80%"></textarea></div>
+						<div class="col-md-3" style="margin-bottom:1%;text-align:center">附件：</div>
+						<div class="col-md-9" style="margin-bottom:1%"><a class="btn btn-info sc" href="javascript:;">上传</a></div>
+						<div class="col-md-12" style="text-align:center">
+							<button id="tj" class="btn btn-info">提交</button>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	 	<div class="row footer">
+			<div class="col-md-12">
+				京审备案
+			</div>
+		</div> 
+	</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>	
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/leftBot.js"></script>
+	<script src="../../static/js/schedule_list.js"></script>
+	<script src="../../static/js/deliverable_detail.js"></script>
+	<script src="../../static/js/ban.js"></script>
+</body>
+</html>

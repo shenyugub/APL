@@ -1,0 +1,41 @@
+button {
+  outline: none; }
+
+.ts {
+  color: red;
+  display: none; }
+
+.tshy {
+  color: red;
+  display: none; }
+
+#confirm {
+  width: 20%;
+  margin-top: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%; }
+
+.rights .form-group {
+  margin-bottom: 3%;
+  margin-top: 1%; }
+  .rights .form-group .xing {
+    color: red; }
+
+.rightt {
+  padding-left: 5%;
+  text-align: left;
+  padding-bottom: 1%; }
+  .rightt h3 {
+    font-size: 25px;
+    padding-left: 3%; }
+  .rightt span {
+    font-size: 14px;
+    color: #b92c28;
+    padding-left: 3%; }
+
+.line {
+  height: 3px;
+  background: #ccc;
+  margin-left: 3%; }
+
+/*# sourceMappingURL=gongsi.css.map */

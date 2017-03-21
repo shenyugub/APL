@@ -1,0 +1,49 @@
+*{
+	font-size:14px;
+}
+.rights{
+	border:1px solid #ccc;
+	margin-top:1.4%;
+	border-radius:6px;
+	margin-left:2%;
+	padding-top:1%;
+	padding-bottom:2%;
+	padding-left:0;
+}
+#search{
+	padding-left:5%;
+	padding-right:5%;
+	margin-right:3%;
+}
+.timer{
+	height:30px;
+	border:1px solid #ccc;
+	border-radius:6px;
+	padding-top:1%;
+	padding-bottom:1%;
+	width:45%;
+}
+#export{
+	padding-left:5%;
+	padding-right:5%;
+}
+table a{
+	padding-right:10px;
+	padding-left:10px;
+	color:#2babd2;
+	font-size:14px;
+}
+a:hover{
+	color:#2aabd2;
+	text-decoration:none;
+}
+@media screen and (max-width:1025px){
+	.timer{
+		font-size:12px;
+	}
+}
+@media screen and (min-width:1025px){
+	.timer{
+		font-size:14px;
+	}
+}

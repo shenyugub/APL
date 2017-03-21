@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../../static/css/investor_schedule_list.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="mark"></div>
+  <div id="tck">
+    <h5>点评谈约<img src="../../static/images/close.png" id="close"></h5>
+    <div class="te">
+      <textarea  rows="5" style="width:100%;" placeholder="aaaaaaa" id="textarea"></textarea>
+    </div>
+    <button id="dpBtn" class="btn btn-info">发表点评</button>
+  </div>
+ <div id="all">
+ 	  	<p><a href="{{ url_for('investor.project_list_mine') }}">个人中心</a></p>
+     <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+ </div>  
+	<nav class="navbar head" role="navigation">  			  
+   		<div class="navbar-header">
+        	<button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav navbar-left ultop">
+            <li><a href="{{ url_for('main.index') }}">首页</a></li>
+            <li><a href="{{ url_for('investor.project_list_all') }}">全部项目</a></li>
+            <!-- <li><a href="#">业界新闻</a></li> -->
+        </ul>
+        <div class="navbar-right spright">
+				<!-- <span>客户端</span> -->
+				<span id="emailId">{{ current_user('user').email }}</span>
+		</div>
+    </div>	
+    </nav>  
+	<div class="row content">
+		<div class="col-md-3 col-md-offset-1 lefts" style="padding-right:0">
+      <div class="row">
+        <div class="col-md-12 leftTop" style="padding:0">
+          <div class="row t">
+            <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+              <h3 id="companyName">
+                  {{ current_user('user').company or '请设置公司信息' }}
+              </h3>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                <a href="{{ url_for('investor.show_profile') }}">
+                    <button type="button" class="btn btn-danger" id="bj">
+                        编辑资料
+                    </button>
+                </a>
+            </div>
+          </div>
+          <div class="row t">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+              <span id="uName">{{ current_user('user').name or '请设置姓名' }}</span>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" style="padding:0;text-align:right;padding-right:10%">
+              <span id="email">{{ current_user('user').email }}</span>
+            </div>
+          </div>
+          <div class="row t">
+            <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+              <span>收到约谈<label id="yt">(0)</label></span>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+              <span>收到点评<label id="dp">(0)</label></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 leftBot">
+          <ul class="ul">
+            <li><a href="{{ url_for('investor.project_list_mine') }}">关注的项目<span>></span></a></li>
+            <li style="background:#2aabd2"><a href="{{ url_for('investor.show_schedules') }}" style="color:#fff">约谈记录<span>></span></a></li>
+           <li><a href="{{ url_for('investor.show_settings') }}">安全设置<span>></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+		<div class="col-md-7 rights" style="text-align:left">
+      <div class="rightt">
+        <h3>约谈</h3>
+      </div>
+      <div class="line"></div>
+      <div class="col-md-12">
+      <table class="table table-hover table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="text-align:center;">
+              约谈时间
+            </th>
+            <th style="text-align:center;">
+              约谈项目
+            </th>
+            <th style="text-align:center;">
+              操作
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              TB - Monthly
+            </td>
+            <td>
+              <button class="btn btn-info dp">点评约谈</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              TB - Monthly
+            </td>
+            <td>
+              <button class="btn btn-info dp">点评约谈</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2
+            </td>
+            <td>
+              TB - Monthly
+            </td>
+            <td>
+              <button class="btn btn-info dp">点评约谈</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              3
+            </td>
+            <td>
+              TB - Monthly
+            </td>
+            <td>
+              <button class="btn btn-info dp">点评约谈</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              4
+            </td>
+            <td>
+              TB - Monthly
+            </td>
+            <td>
+              <button class="btn btn-info dp">点评约谈</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+	</div>
+	<div class="row footer">
+		<div class="col-md-12">
+			京审备案
+		</div>
+	</div>
+</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../static/js/structure.js"></script>
+  <script src="../../static/js/investor_schedule_list.js"></script>
+	<script src="../../static/js/mark.js"></script>
+</body>
+</html>

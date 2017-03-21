@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/service_detail.css">
+	<link rel="stylesheet" href="../../static/css/common.css">
+</head>
+<body>
+	<div class="container-fluid">
+ 		<div id="all">
+ 		   	<p><a href="{{ url_for('startup.project_list') }}">个人中心</a></p>
+            <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+ 		</div>
+   		<nav class="navbar head" role="navigation">  			  
+   			<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            		<span class="sr-only">切换导航</span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+        		</button>
+        		<a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+    		</div>
+    		<div class="collapse navbar-collapse" id="example-navbar-collapse">
+        		<ul class="nav navbar-nav navbar-left ultop">
+            		<li><a href="{{ url_for('main.index') }}">首页</a></li>
+            		<li><a href="./service.html">服务包</a></li>
+            		<!-- <li><a href="#">业界新闻</a></li> -->
+            		<li><a href="{{ url_for('startup.investor_list') }}">投资人</a></li>
+        		</ul>
+        		<div class="navbar-right spright">
+					<!-- <span>客户端</span> -->
+					<span id="emailId">{{ current_user('user').email }}</span>
+				</div>
+    		</div>	
+    	</nav>  
+		<div class="row content">
+			<div class="col-md-3 col-md-offset-1 lefts" style="padding-right:0">
+				<div class="row">
+					<div class="col-md-12 leftTop" style="padding:0">
+						<div class="row t">
+							<div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+								<h3 id="companyName">
+                                    {{ current_user('user').company or '请设置公司信息' }}
+								</h3>
+							</div>
+							<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                                <a href="{{ url_for('startup.show_profile') }}">
+									<button type="button" class="btn btn-danger" id="bj">
+									编辑资料
+									</button>
+								</a>
+							</div>
+						</div>
+						<div class="row t">
+							<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+								<span id="uName">{{ current_user('user').name or '请设置姓名' }}</span>
+							</div>
+							<div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" style="padding:0;text-align:right;padding-right:10%">
+								<span id="email">{{ current_user('user').email }}</span>
+							</div>
+						</div>
+						<div class="row t">
+							<div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+								<span>收到约谈<label id="yt">(0)</label></span>
+							</div>
+							<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+								<span>收到点评<label id="dp">(0)</label></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 leftBot">
+						<ul class="ul">
+                            <li><a href="{{ url_for('startup.project_list') }}">项目管理<span>></span></a></li>
+                            <li style="background:#2aabd2"><a href="{{ url_for('startup.service_list') }}" style="color:#fff">我的服务<span>></span></a></li>
+                            <li><a href="{{ url_for('startup.bill_list') }}">账务<span>></span></a></li>
+							<li><a href="{{ url_for('startup.investor_list') }}">投资人<span>></span></a></li>
+							<li><a href="{{ url_for('startup.show_settings') }}">设置中心<span>></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7 rights">
+		 		<div class="col-sm-12 rigTop" style="text-align:left;">
+		 			<div class="col-sm-12" style="text-align:left; padding:0">
+			    		<label class="col-sm-3 control-label">服务包类别：</label>
+			   			<div class="col-sm-3" id="leibie">
+			      			APL系统支撑
+			    		</div>
+					</div>
+					<div class="col-sm-12" style="text-align:left; padding:0">
+			    		<label class="col-sm-3 control-label">服务包名称：</label>
+			   			<div class="col-sm-3" id="mingcheng">
+			      			APL系统支撑
+			   	 		</div>
+					</div>
+					<div class="col-sm-12" style="text-align:left; padding:0">
+			    		<label class="col-sm-3 control-label">状态：</label>
+			   			<div class="col-sm-3" id="zhuangtai">
+			      			待审核
+			    		</div>
+					</div>
+		 		</div>
+				<div class="rightt">
+					<h3>沟通记录</h3>
+				</div>
+				<div class="col-md-12 jilu">
+					<div class="col-md-2">
+						<img src="../../static/images/product.jpeg" alt="">
+					</div>
+					<div class="col-md-10">
+						<table class="table table-hover table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>
+										服务项
+									</th>
+									<th>
+										服务项描述
+									</th>
+									<th>
+										报价
+									</th>
+									<th>
+										报价说明
+									</th>
+									<th>
+										操作
+									</th>
+									<th>
+										备注
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										1月
+									</td>
+									<td>
+										2000
+									</td>
+									<td>
+										122(单位)
+									</td>
+									<td>
+										1月
+									</td>
+									<td>
+										<a href="###">查看</a>
+									</td>
+									<td>
+										122(单位)
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-md-12 jilu">
+					<div class="col-md-2">
+						<img src="../../static/images/product.jpeg" alt="">
+					</div>
+					<div class="col-md-10">
+						<table class="table table-hover table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>
+										服务审核报告
+									</th>
+									<th>
+										服务总金额
+									</th>
+									<th>
+										备注
+									</th>
+									<th>
+										时间
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										1月
+									</td>
+									<td>
+										2000
+									</td>
+									<td>
+										122(单位)
+									</td>
+									<td>
+										1月
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="btnBox"><button class="btn btn-info">确认支付</button><button class="btn btn-info">取消</button></div>
+					</div>
+				</div>
+				<div class="col-md-12 jilu">
+					<div class="col-md-2">
+						<img src="../../static/images/product.jpeg" alt="">
+					</div>
+					<div class="col-md-10">
+						<p>xxxxxx</p>
+						<img src="../../static/images/product.jpeg" alt="">
+						<p>2016-11-22 09:25:03</p>
+					</div>
+				</div>
+				<div class="col-md-11 jilu1">
+					<form class="form-horizontal" role="form" method="post">
+						<input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+			  			<div class="form-group" style="margin-top:2%;">
+			    			<label class="col-sm-2 control-label">附件上传：</label>
+			   				<div class="col-sm-8">
+			      				<input type="file" name="file">
+			    			</div>
+			  			</div>
+			  			<div class="form-group" style="margin-top:2%;">
+			    			<label class="col-sm-2 control-label">留言：</label>
+			   				<div class="col-sm-8">
+			      				<textarea id="textarea" rows="5" class="txt" ></textarea>
+			    			</div>
+			  			</div>	
+			  			<div class="form-group" style="margin-top:2%; text-align:center;">
+			  				<button type="button" id="tj" class="btn btn-info">提交</button>
+			  			</div>		  				
+					</form>
+				</div>
+			</div> 
+		</div>
+	 	<div class="row footer">
+			<div class="col-md-12">
+				京审备案
+			</div>
+		</div> 
+	</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/service_detail.js"></script>
+	<script src="../../static/js/mark.js"></script>
+</body>
+</html>

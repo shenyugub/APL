@@ -1,0 +1,73 @@
+.mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  display: none; }
+
+#tck {
+  display: none;
+  width: 30%;
+  background: #fff;
+  z-index: 10001;
+  position: fixed;
+  left: 50%;
+  margin-left: -15%;
+  top: 50%;
+  text-align: center; }
+  #tck h5 {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: url(../images/tckbj.png);
+    margin: 0;
+    padding-left: 5%;
+    position: relative;
+    font-weight: bold;
+    color: #666;
+    text-align: left; }
+    #tck h5 img {
+      position: absolute;
+      right: 3%;
+      top: 13px; }
+  #tck p {
+    margin-top: 3% !important; }
+
+.rights .form-group {
+  margin-top: 3%; }
+.rights #save {
+  margin-right: 3%; }
+
+#rz {
+  background: url(../images/qian.png) no-repeat;
+  background-position: right center; }
+
+#gn {
+  background: url(../images/day.png) no-repeat;
+  background-position: right center; }
+
+.rightt {
+  padding-left: 5%;
+  text-align: left;
+  padding-bottom: 1%; }
+  .rightt h3 {
+    font-size: 25px;
+    padding-left: 3%; }
+  .rightt span {
+    font-size: 14px;
+    color: #b92c28;
+    padding-left: 3%; }
+
+.line {
+  height: 3px;
+  background: #ccc;
+  margin-left: 3%; }
+
+.things {
+  cursor: pointer;
+ color:#6aabd2;}
+
+/*# sourceMappingURL=bianjixiangmu.css.map */

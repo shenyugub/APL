@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/project_list_mine_detail.css">
+</head>
+<body>
+	<div class="container-fluid">
+ 		<div id="all">
+ 		   	<p><a href="{{ url_for('investor.project_list_mine') }}">个人中心</a></p>
+            <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+ 		 </div>
+   		<nav class="navbar head" role="navigation">  			  
+   		<div class="navbar-header">
+        	<button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav navbar-left ultop">
+           <li><a href="{{ url_for('main.index') }}">首页</a></li>
+            <li><a href="{{ url_for('investor.project_list_all') }}">全部项目</a></li>
+            <!-- <li><a href="#">业界新闻</a></li> -->
+            
+        </ul>
+        <div class="navbar-right spright">
+				<!-- <span>客户端</span> -->
+				<span id="emailId">{{ current_user('user').email }}</span>
+		</div>
+    </div>	
+    </nav>  
+	<div class="row content">
+		<div class="col-md-3 col-md-offset-1 lefts" style="padding-right:0">
+			<div class="row">
+				<div class="col-md-12 leftTop" style="padding:0">
+					<div class="row t">
+						<div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+							<h3 id="companyName">
+                                {{ current_user('user').company or '请设置公司信息' }}
+							</h3>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+								<a href="{{ url_for('investor.show_profile') }}">
+                            		<button type="button" class="btn btn-danger" id="bj">
+                             			编辑资料
+                            		</button>
+                      			</a>
+						</div>
+					</div>
+					<div class="row t">
+						<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+							<span id="uName">{{ current_user('user').name or '请设置姓名' }}</span>
+						</div>
+						<div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" style="padding:0;text-align:right;padding-right:10%">
+							<span id="email">{{ current_user('user').email }}</span>
+						</div>
+					</div>
+					<div class="row t">
+						<div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+							<span>收到约谈<label id="yt">(0)</label></span>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+							<span>收到点评<label id="dp">(0)</label></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 leftBot">
+					<ul class="ul">
+            			<li style="background:#2aabd2"><a href="{{ url_for('investor.project_list_mine') }}" style="color:#fff">关注的项目<span>></span></a></li>
+            			<li><a href="{{ url_for('investor.show_settings') }}">安全设置<span>></span></a></li>
+          			</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7 rights">
+			<div class="col-md-12 xmlist">
+                <a href="{{ url_for('investor.follow', pid=project.id, source='my') }}" id="gz">
+                    {% if current_user('user').is_following_project(project) %}
+                        <button class="btn btn-info">取消关注</button>
+                    {% else %}
+                        <button class="btn btn-info">关注</button>
+                    {% endif %}
+                </a>
+				<a href="###" id="tz"><button class="btn btn-info">投资约谈</button></a>
+				<div class="col-md-12" style="border-bottom:1px solid #ccc">
+					<div class="col-md-2">
+						<img src="{{ project.icon_url or '../../static/images/product.jpeg'}}" alt="">
+					</div>
+					<div class="col-md-10">
+						<h6>{{ project.name }}</h6>
+						<p><span>{{ project.industry.value }} | {{ project.company_phase.value }} | {{ project.deadline }}</span><span>约谈：<label for="">2</label></span><span>点评：<label for="">{{ project.comments.count() }}</label></span></p>
+						
+					</div>
+				</div>
+				<div class="col-md-12" style="margin-top:2%;">
+					<div class="col-md-2" style="padding-top:2%;padding-left:0">
+						项目阶段
+					</div>
+					<div class="col-md-10 xmjd">
+						<div>
+							概念阶段
+						</div>
+						<div>
+							规划阶段
+						</div>
+						<div>
+							开发阶段
+						</div>
+						<div>
+							检验阶段
+						</div>
+						<div>
+							技术评审
+						</div>
+						<div>
+							试制阶段
+						</div>
+					</div>
+					<div class="col-md-10 col-md-offset-2 zt">
+							<div>
+								良好
+							</div>
+							<div>
+								良好
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="col-md-12 rzqkBox">
+				融资情况：{{ project.financing_status }}
+				
+			</div>
+			<div class="col-md-12 rzqkBox">
+				<h5>项目概述</h5>
+				<div class="col-md-12">
+					<div class="col-md-3">项目介绍：</div>
+					<div class="col-md-9">{{ project.description }}</div>
+					<div class="col-md-3">项目优势：</div>
+					<div class="col-md-9">{{ project.advantage }}</div>
+					<div class="col-md-3">交付日期：</div>
+					<div class="col-md-9">{{ project.deadline }}</div>
+					<div class="col-md-3">融资目标：</div>
+					<div class="col-md-9">{{ project.financing_sum }}万元</div>
+					<div class="col-md-3">商业计划书：</div>
+					<div class="col-md-9">
+                    {% if project.bp_url %}
+                        <a class="btn btn-info" href="{{ project.bp_url }}">立即下载</a>
+                    {% else %}
+                        <a class="btn btn-info" disabled>未上传</a>
+                    {% endif %}
+                    </div>
+				</div>
+			</div>
+			<div class="col-md-12 rzqkBox">
+				<h5>项目团队</h5>
+				<div class="col-md-12">
+					<div class="col-md-3">企业名称：</div>
+					<div class="col-md-9">{{ project.owner.company_name }}</div>
+					<div class="col-md-3">企业简介：</div>
+					<div class="col-md-9">{{ project.owner.company_desc }}</div>
+					<div class="col-md-3">联系人：</div>
+					<div class="col-md-9">{{ project.contact_name }}</div>
+				</div>
+			</div>
+			<div class="col-md-12 rzqkBox">
+				<h5 style="border:none;padding-bottom:0">项目点评</h5>
+				<div class="col-md-12" style="text-align:center;">
+                    <form action="/investor/post_comment/" method="post">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                        <input type="hidden" name="source" value="my"/>
+                        <input type="hidden" name="pid" value="{{ project.id }}">
+                        <textarea name="content" rows="5" style="width:100%;" id="txt"></textarea>
+                        <button type="submit" id="fbdp" class="btn btn-info">发布点评</button>
+                    </form>
+					<div class="line"></div>
+
+                    {% if project.comments.count() ==0 %}
+
+					<div id="ly">
+						暂无项目点评
+					</div>
+                    {% else %}
+					<div class="plBox" style="text-align:left">
+                        {% for c in project.comments %}
+						    <p style="border-bottom:1px dashed #ccc">{{ c.content }}<span style="float:right;margin-right:3%">{{ c.gmt_create }}</span></p>
+                        {% endfor %}
+					</div>
+                    {% endif %}
+				</div>
+
+
+			</div>
+		</div> 
+	</div>
+	 <div class="row footer">
+		<div class="col-md-12">
+			京审备案
+		</div>
+	</div> 
+</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/project_list_mine_detail.js"></script>
+	<script src="../../static/js/mark.js"></script>
+</body>
+</html>

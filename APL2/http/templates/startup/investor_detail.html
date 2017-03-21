@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=devive-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../static/css/investor_detail.css">
+</head>
+<body>
+	<div class="container-fluid">
+	<div id="all">
+      	<p><a href="{{ url_for('startup.project_list') }}">个人中心</a></p>
+        <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+  	</div>
+		<nav class="navbar head" role="navigation">  			  
+   			<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            		<span class="sr-only">切换导航</span>
+           			<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+        		</button>
+        		<a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+   			</div>
+    		<div class="collapse navbar-collapse" id="example-navbar-collapse">
+        		<ul class="nav navbar-nav navbar-left ultop">
+            		<li><a href="{{ url_for('main.index') }}">首页</a></li>
+            		
+            		<!-- <li><a href="#">业界新闻</a></li> -->
+            		
+        		</ul>
+        		<div class="navbar-right spright">
+					<!-- <span>客户端</span> -->
+					<span id="emailId">{{ current_user('user').email }}</span>
+				</div>
+    			</div>	
+    	</nav>  
+    	<div class="row content">
+    		<div class="col-md-3 col-md-offset-1 lefts" style="padding-right:0">
+				<div class="row">
+					<div class="col-md-12 leftTop" style="padding:0">
+						<div class="row t">
+							<div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+								<h3 id="companyName">
+                                   {{ current_user('user').company or '请设置公司信息' }} 
+                                    
+								</h3>
+							</div>
+							<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                                <a href="{{ url_for('startup.show_profile') }}">
+									<button type="button" class="btn btn-danger" id="bj">
+									编辑资料
+								</button>
+								</a>
+							</div>
+						</div>
+						<div class="row t">
+							<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+								<span id="uName">{{ current_user('user').name or '请设置姓名' }}</span>
+							</div>
+							<div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" style="padding:0;text-align:right;padding-right:10%">
+								<span id="email">{{ current_user('user').email }}</span>
+							</div>
+						</div>
+						<div class="row t">
+							<div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+								<span>收到约谈<label id="yt">(0)</label></span>
+							</div>
+							<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+								<span>收到点评<label id="dp">(0)</label></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 leftBot">
+						<ul class="ul">
+
+                            <li><a href="{{ url_for('startup.project_list') }}" >项目管理<span>></span></a></li>
+							<li><a href="{{ url_for('startup.service_list') }}">我的服务<span>></span></a></li>
+                            <li><a href="{{ url_for('startup.bill_list') }}">账务<span>></span></a></li>
+                            <li style="background:#2aabd2"><a href="{{ url_for('startup.investor_list') }}" style="color:#fff">投资人<span>></span></a></li>
+							<li><a href="{{ url_for('startup.show_settings') }}">设置中心<span>></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7 rights main">
+				<div class="col-md-12 xmlist">
+					<div class="col-md-12">
+						<div class="col-md-2" id="personImg">
+							<img src="../../static/images/product.jpeg" alt="">
+						</div>
+						<div class="col-md-10">
+							<h6>{{ investor.name }}
+								<label for="" id="dp"><span>约谈：<label for="" id="ytNum">2</label></span>
+								<span>点评：<label for="" id="dpNum">2</label></span></label>
+							</h6>
+							<p id="js" style="width:100%; height:30px;"><span id="jbJs">{{ investor.company }}</span>
+								<label for="" id="btns">
+
+                                    <a href="{{ url_for('startup.follow', uid=investor.id) }}">
+                                    {% if current_user('user').is_following_investor(investor) %}
+                                        <button class="btn btn-info">取消关注</button>
+                                    {% else %}
+                                        <button class="btn btn-info">关注</button>
+                                    {% endif %}
+                                    </a>
+
+                                    <button class="btn btn-info">约谈</button><button class="btn btn-info">投递项目</button></label></p>
+							<p>关注领域 ： <span id="gzArea">{{ investor.interested_value()|join('，') }}</span></p>
+							<p>投资阶段 ： <span id="tzJied">{{ investor.invest_phase_value()|join('，') }}</span></p>
+							<p>投资总数 ： <span id="tzNum">6</span>个</p>
+							<p>单笔可投 ： <span id="dbketou">{{ investor.investment_min }} - {{ investor.investment_max }} 万 </span></p>
+						</div>
+					</div>
+				</div>
+{#				<div class="col-md-12 rzqkBox">#}
+{#					<h5>投资案例</h5>#}
+{#					<div class="col-md-12">#}
+{#						<div class="col-lg-5 col-md-10 col-sm-10 col-xs-10 card" style="padding-left:0.5%" >#}
+{#							<div class="col-md-2 proImg">#}
+{#								<img src="../../static/images/product.jpeg" alt="">#}
+{#							</div>#}
+{#							<div class="col-md-9">#}
+{#								<h6 class="proMc">项目名称</h6>#}
+{#								<pid="proJj">项目简介XXXXXXXXXX</p>#}
+{#								<p>2015.08| 天使轮 | 投资金额：480万</p>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="col-lg-5 col-md-10 col-sm-10 col-xs-10 card" style="padding-left:0.5%" >#}
+{#							<div class="col-md-2 proImg">#}
+{#								<img src="../../static/images/product.jpeg" alt="">#}
+{#							</div>#}
+{#							<div class="col-md-9">#}
+{#								<h6 class="proMc">项目名称</h6>#}
+{#								<pid="proJj">项目简介XXXXXXXXXX</p>#}
+{#								<p>2015.08| 天使轮 | 投资金额：480万</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+				<div class="col-md-12 grBox">
+					<h5>个人简介</h5>
+					<div class="col-md-12">
+						<p>{{ investor.resume }}</p>
+					</div>
+				</div>
+{#				<div class="col-md-12 grBox">#}
+{#					<h5>工作经历</h5>#}
+{#					<div class="col-md-12">#}
+{#						<p><label for="" id="gzTime">2015.10-2016.5</label><label id="gzMc">公司名称</label><label id="gzZhiwei">职位</label></p>#}
+{#					</div>#}
+{#					<div class="col-md-12">#}
+{#						<p><label for="" id="gzTime">2015.10-2016.5</label><label id="gzMc">公司名称</label><label id="gzZhiwei">职位</label></p>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="col-md-12 grBox">#}
+{#					<h5>教育经历</h5>#}
+{#					<div class="col-md-12">#}
+{#						<p><label for="" id="jyTime">2015.10-2016.5</label><label id="jyMc">学校名称</label><label id="jyZy">专业</label><label id="jyRy">荣誉</label></p>#}
+{#					</div>#}
+{#				</div>#}
+			</div>
+		</div>
+		<div class="row footer">
+			<div class="col-md-12">
+				京审备案
+			</div>
+		</div>
+	</div>
+	<script src="../../static/js/jquery-1.11.1.min.js"></script>
+	<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/js/structure.js"></script>
+	<script src="../../static/js/mark.js"></script>
+</body>
+</html>

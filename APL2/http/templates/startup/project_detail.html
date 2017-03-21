@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=devive-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../static/css/startup_project_detail.css">
+    <style>
+            #tck table{
+               width:90%;
+               margin:0 auto;
+               margin-top:1%;
+               margin-bottom:1%;
+            }
+            #tck{
+                max-height:90%;
+                overflow-y:auto; 
+                overflow-x:hidden;
+                padding-bottom:2%; 
+            }
+            .confirmBtn,.cancel{
+                padding-left:3%;
+                padding-right:3%;
+            }
+            
+            .tjbtn p{
+                margin-top:1%;
+                margin-left:5%;
+                text-align:left;
+            }
+            #textareaTex{
+                width:80%;
+
+            }
+    </style>
+</head>
+<body>
+    <div class="ppid" id="{{ project.ppid }}"></div>
+     <div class="mark"></div>
+     <div id="tck">
+        <h5></h5>
+            <div class="div">
+               <table class="table table-hover table-bordered table-striped tckTab">
+                <thead>
+                    <tr>
+                        <th style="width:8%">编号</th>
+                        <th style="width:20%">服务项名称</th>
+                        <th>服务项描述</th>
+                        <th style="width:16%">类别</th>
+                        <th style="width:10%">报价</th>
+                        <th style="width:5%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>  
+                </table> 
+            </div>
+            <div class="div" style="display:none">
+                <form class="form-horizontal" role="form" style="margin-top:1%">
+                            <div class="form-group">
+                                <label for="titles" class="col-sm-3 control-label">标题：</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="titles">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">需求分类：</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="xqfl">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="xqnr" class="col-sm-3 control-label">需求内容：</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" rows="3" id="xqnr" placeholder="请输入需求内容"></textarea>
+                                </div>
+                            </div>
+                        </form>
+            </div>
+            <div class="div tjbtn" style="display:none;padding-top:1%;">
+                <!-- <p><input type="file" id="files"></p> -->
+                <div class="col-md-2" style="text-align:center;">备注：</div>
+                <div class="col-md-10" style="text-align:left;margin-bottom:1%"><textarea id="textareaTex" rows="5"></textarea></div>
+                
+                <!-- <input type="hidden" id='va'> -->
+               
+            </div>
+            <input type="button" class="btn btn-info confirmBtn" value="确认">
+            <input type="button" class="btn btn-info cancel" value="取消">
+     </div>
+<div class="container-fluid">
+    <div id="all">
+        <p><a href="{{ url_for('startup.project_list') }}">个人中心</a></p>
+        <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+    </div>
+    <nav class="navbar head" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav navbar-left ultop">
+                <li><a href="{{ url_for('main.index') }}">首页</a></li>
+
+                <!-- <li><a href="#">业界新闻</a></li> -->
+
+            </ul>
+            <div class="navbar-right spright">
+                <!-- <span>客户端</span> -->
+                <span id="emailId">{{ current_user('user').email }}</span>
+            </div>
+        </div>
+    </nav>
+    <div class="row content">
+        <div class="col-md-3 col-md-offset-1 lefts" style="padding-right:0">
+            <div class="row">
+                <div class="col-md-12 leftTop" style="padding:0">
+                    <div class="row t">
+                        <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+                            <h3 id="companyName">
+                                {{ current_user('user').company or '请设置公司信息' }}
+                            </h3>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                            <a href="{{ url_for('startup.show_profile') }}">
+                                <button type="button" class="btn btn-danger" id="bj">
+                                    编辑资料
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row t">
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                            <span id="uName">{{ current_user('user').name or '请设置姓名' }}</span>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" style="padding:0;text-align:right;padding-right:10%">
+                            <span id="email">{{ current_user('user').email }}</span>
+                        </div>
+                    </div>
+                    <div class="row t">
+                        <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+                            <span>收到约谈<label id="yt">(0)</label></span>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                            <span>收到点评<label id="dp">(0)</label></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 leftBot">
+                    <ul class="ul">
+
+                        <li style="background:#2aabd2">
+                            <a href="{{ url_for('startup.project_list') }}" style="color:#fff">项目管理<span>></span></a>
+                        </li>
+                        <li><a href="{{ url_for('startup.service_list') }}">我的服务<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.bill_list') }}">账务<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.investor_list') }}">投资人<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.show_settings') }}">设置中心<span>></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 rights">
+            <div class="col-md-12 xmlist">
+                <div class="col-md-12" style="border-bottom:1px solid #ccc">
+                    <div class="col-md-2">
+                        <img src="{{ project.icon_url or '../../static/images/product.jpeg' }}" alt="">
+                    </div>
+                    <div class="col-md-10">
+                        <h6>{{ project.name }}</h6>
+                        <p>
+                            <span> {{ project.industry.value }} | {{ project.company_phase.value }} | {{ project.deadline }}</span><span>约谈：<label for="">2</label></span><span>点评：<label for="">{{ project.comments.count() }}</label></span>
+                        </p>
+                        <a href="{{ url_for('startup.project_new', pid=project.id) }}">
+                            <button class="btn btn-info">编辑</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top:2%;">
+                    <div class="col-md-2">
+                        {% for phase in project.phases %}
+                            {% if phase.phase.id == project.phase_index %}
+                                <span>{{ phase.phase.name }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-10 xmjd">
+                        {% for phase in project.phases %}
+                            <div>
+                                {% if phase.phase.id == project.phase_index %}
+                                    <span style="color:blue">{{ phase.phase.name }}</span>
+                                {% else %}
+                                    <span>{{ phase.phase.name }}</span>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h4></h4>
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th style="text-align:center;">
+                                交付物
+                            </th>
+                            <th style="text-align:center;">
+                                描述
+                            </th>
+                            <th style="text-align:center; width:15%">
+                                操作
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for attachment in attachments %}
+                            <tr>
+                                <td>
+                                    {{ attachment.name }}
+                                </td>
+                                <td>
+                                    {{ attachment.description }}
+                                </td>
+                                <td>
+                                    <button class="jl" id="{{ attachment.id }}">提交</button>
+                                    <button class="zf">忽略</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th style="text-align:center;">
+                                本阶段预计开发时间
+                            </th>
+                            <th style="text-align:center;">
+                                已用时长
+                            </th>
+                            <th style="text-align:center;">
+                                风险状况
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {{ project.duration }}天
+                            </td>
+                            <td>
+                                {{ days }}天
+                            </td>
+                            <td>
+                                {% if project.duration > days %}
+                                    <span>良好</span>
+                                {% else %}
+                                    <span style="color:red">逾期</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <button class="btn btn-info card">系统服务</button> 
+                        <button class="btn btn-info card">定制服务</button> 
+                        <button class="btn btn-info">进入下一阶段</button> 
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12 rzqkBox">
+                融资情况：{{ project.financing_status }}
+            </div>
+            <div class="col-md-12 rzqkBox">
+                <h5>项目概述</h5>
+                <div class="col-md-12">
+                    <div class="col-md-3">项目介绍：</div>
+                    <div class="col-md-9">{{ project.description }}</div>
+                    <div class="col-md-3">项目优势：</div>
+                    <div class="col-md-9">{{ project.advantage }}</div>
+                    <div class="col-md-3">交付日期：</div>
+                    <div class="col-md-9">{{ project.deadline }}</div>
+                    <div class="col-md-3">融资目标：</div>
+                    <div class="col-md-9">{{ project.financing_sum }}</div>
+                    <div class="col-md-3">商业计划书：</div>
+                    {% if project.bp_url %}
+                        <div class="col-md-9"><a class="btn btn-info" href="{{ project.bp_url }}">立即下载</a></div>
+                    {% else %}
+                        <div class="col-md-9"><a class="btn btn-info" disabled>未上传</a></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12 rzqkBox">
+                <h5>项目团队</h5>
+                <div class="col-md-12">
+                    <div class="col-md-3">企业名称：</div>
+                    <div class="col-md-9">{{ project.owner.company_name }}</div>
+                    <div class="col-md-3">企业简介：</div>
+                    <div class="col-md-9">{{ project.owner.company_desc }}</div>
+                    <div class="col-md-3">联系人：</div>
+                    <div class="col-md-9">{{ project.contact_name }}</div>
+                </div>
+            </div>
+            <div class="col-md-12 rzqkBox">
+                <h5 style="border:none;padding-bottom:0">项目点评</h5>
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="line"></div>
+
+                    {% if project.comments.count() == 0 %}
+                        <div id="ly">
+                            暂无项目点评
+                        </div>
+                    {% else %}
+                        <div class="plBox" style="text-align:left;">
+                            {% for c in project.comments %}
+                                <p style="border-bottom:1px dashed #ccc">{{ c.content }}<span class="time" style="float:right;margin-right:3%">{{ c.gmt_create }}</span>
+                                </p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-md-12">
+            京审备案
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery-1.11.1.min.js"></script>
+<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../static/js/structure.js"></script>
+<script src="../../static/js/schedule_list.js"></script>
+<script src="../../static/js/project_detail.js"></script>
+<script src="../../static/js/mark.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.main h4 {
+  padding-top: 2%;
+  font-size: 20px;
+  font-weight: bold; }
+.main .form-group {
+  margin-top: 3%; }
+.main button {
+  width: 20%; }
+
+#submits {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  outline: none; }
+.footer {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  background: #313131;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 1%; }
+
+/*# sourceMappingURL=dingzhihuaxq.css.map */

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/admin_index.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar head" role="navigation">               
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+            </div>
+        </nav>  
+        <div class="row content">
+            <div id="dialog">
+                <form method="post">
+                <h3>洪泰孵化器后台管理系统</h3>
+                    <p><label for="">用户名：</label><input type="text" placeholder="用户名" id="userName"></p>
+                    <p><label for="">密码：</label><input type="password" placeholder="密码" id="psw"></p>
+                    <p><label for="">验证码：</label><input type="text" placeholder="验证码" id="vcode"></p>
+                    <p><span id="getImg"><img src="" style="width:30%;height:100%;"><label for="" id="changeOne">换一张</label></span></p>
+                    <p><input type="button" class="btn btn-success" id="dls" value="登录"></p>
+                <!-- <div id="ts">
+                    <p>密码错误</p>
+                    <p>验证码错误</p>
+                </div> -->
+                </form>
+            </div>
+
+        </div>
+        <div class="row footer">
+            <div class="col-md-12">
+                京审备案
+            </div>
+        </div>
+    </div>
+    <script src="../../static/js/jquery-1.11.1.min.js"></script>
+    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../static/js/md5.js"></script>
+    <script src="../../static/js/index.js"></script>
+ 
+</body>
+</html>

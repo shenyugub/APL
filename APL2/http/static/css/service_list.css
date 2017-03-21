@@ -1,0 +1,47 @@
+.rightt {
+  padding-left: 5%;
+  text-align: left;
+  padding-bottom: 1%; }
+  .rightt h3 {
+    font-size: 25px;
+    padding-left: 1%; }
+
+.line {
+  height: 3px;
+  background: #ccc;
+  margin-left: 3%; }
+
+#dzhxq {
+  width: 50%;
+  margin-top: 2%; }
+.card {
+  background: #efefef;
+  margin-top: 2.2%;
+  padding-top:1.5%;
+  padding-bottom:1.5%;
+  border-radius: 6px;
+  position: relative; 
+  text-align:center;
+  cursor:pointer;
+  font-size:18px; 
+  width:48%;
+  float:left;}
+.card:nth-of-type(1){
+  margin-right:4%;
+}
+table{
+  margin-top:2.3%;
+}
+
+table th{
+    text-align:center;
+}
+table td{
+    text-align:center;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none; }
+
+/*# sourceMappingURL=wodefuwubao.css.map */

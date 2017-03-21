@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=devive-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../static/css/project_new.css">
+    <link rel="stylesheet" href="../../static/css/common.css">
+</head>
+<body>
+<div class="mark"></div>
+
+<div class="container-fluid">
+    <div id="all">
+        <p><a href="{{ url_for('startup.project_list') }}">个人中心</a></p>
+        <p><a href="{{ url_for('main.logout') }}">退出</a></p>
+    </div>
+    <nav class="navbar head" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../../static/images/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav navbar-left ultop">
+                <li><a href="{{ url_for('main.index') }}">首页</a></li>
+                <!-- <li><a href="#">业界新闻</a></li> -->
+
+            </ul>
+            <div class="navbar-right spright">
+                <!-- <span>客户端</span> -->
+                <span id="emailId">{{ current_user('user').email }}</span>
+            </div>
+        </div>
+    </nav>
+    <div class="row content">
+        <div class="col-md-3 col-md-offset-1 lefts" style="padding-right:0">
+            <div class="row">
+                <div class="col-md-12 leftTop" style="padding:0">
+                    <div class="row t">
+                        <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+                            <h3 id="companyName">
+                                {{ current_user('user').company or '请设置公司信息' }}
+                            </h3>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                            <a href="{{ url_for('startup.show_profile') }}">
+                                <button type="button" class="btn btn-danger" id="bj">
+                                    编辑资料
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row t">
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                            <span id="uName">{{ current_user('user').name or '请设置姓名' }}</span>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" style="padding:0;text-align:right;padding-right:10%">
+                            <span id="email">{{ current_user('user').email }}</span>
+                        </div>
+                    </div>
+                    <div class="row t">
+                        <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+                            <span>收到约谈<label id="yt">(0)</label></span>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" style="padding:0">
+                            <span>收到点评<label id="dp">(0)</label></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 leftBot">
+                    <ul class="ul">
+                        <li><a href="{{ url_for('startup.project_list') }}">项目管理<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.service_list') }}">我的服务<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.bill_list') }}">账务<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.investor_list') }}">投资人<span>></span></a></li>
+                        <li><a href="{{ url_for('startup.show_settings') }}">设置中心<span>></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 rights">
+            <div class="rightt">
+                {% if project.id %}
+                    <h3>编辑项目</h3>
+                {% else %}
+                    <h3>新建项目</h3>
+                {% endif %}
+            </div>
+            <div class="line"></div>
+            <form class="form-horizontal" role="form" method="post" id="formData">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                {#+++++++++++++++文件上传相关参数++++++++++++++++#}
+                {#                    <input type="hidden" name="OSSAccessKeyId">#}
+                {#                    <input type="hidden" name="x-oss-security-token">#}
+                {#                    <input type="hidden" name="policy">#}
+                {#                    <input type="hidden" name="Signature">#}
+                {#                    <input type="hidden" name="key" value="upload/%s">#}
+                {#                    <input type="hidden" name="success_action_status">#}
+                {#                    <input type="hidden" name="callback">#}
+                {#                    <input type="hidden" name="x:uid">#}
+                {#                    <input type="text" name="x:filename" id="filename" value="">#}
+                {{ form.run_mode }}
+                {{ form.oss_access_key_id() }}
+                {{ form.token() }}
+                {{ form.policy() }}
+                {{ form.Signature() }}
+                {{ form.key() }}
+                {{ form.success_action_status() }}
+                {{ form.callback() }}
+                {{ form.uid() }}
+                {{ form.origin_filename() }}
+
+
+                {#--------------------文件上传相关参数-----------------#}
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">项目logo：</label>
+                    <div class="col-sm-6">
+                        <input type="file" id="logo_url" accept="image/*" onChange="uploadFile(this)">
+                    </div>
+                </div>
+                {{ form.logo_url(id='fdsaetrs') }}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="xmmc">项目名称：</label>
+                    <div class="col-sm-6">
+                        {{ form.name(type="text", class="form-control") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="xmjs" class="col-sm-3 control-label">项目介绍：</label>
+                    <div class="col-sm-6">
+                        {{ form.description(class="form-control", rows="3", id="xmjs") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="xmys">项目优势：</label>
+                    <div class="col-sm-6">
+                        {{ form.advantage(type="text", class="form-control", id="xmys") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">所属行业：</label>
+                    <div class="col-sm-6">
+                        {{ form.industry(class="form-control", id="sshy") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">创业阶段：</label>
+                    <div class="col-sm-6">
+                        {{ form.company_phase(class="form-control", id="cyjd") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="rz">融资目标：</label>
+                    <div class="col-sm-6">
+                        {{ form.financing_sum(type="text", class="form-control", id="rz") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">项目阶段选择：</label>
+                    <div class="col-sm-6">
+                        {% for phase in phases %}
+                            <p class="col-sm-12" style="padding:0">
+                                <span class="col-sm-6" style="text-align:left;padding-right:0"><input type="checkbox" name='project_phase' id="ck" value={{ phase.id }} {{ 'checked' if phase.id in checked_phase }} {{ 'disabled' if project.id and project.id > 0 }}><label for="ck" style="padding-left:3%;">{{ phase.name }}</label></span>
+                                <span class="col-sm-6 things" style="text-align:right" data_id="{{ phase.id }}">所需交付物</span>
+                            </p>
+                            <div class="tck" id="{{ phase.id }}">
+                                <h5><img src="../../static/images/close.png" class="close" data_id="{{ phase.id }}">
+                                </h5>
+                                <div class="tck_content">
+
+                                    {% if phase.attachments|length > 0 %}
+                                        {% for a in phase.attachments %}
+                                            <p>{{ a.attachment.name }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>无需交付物</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">商业计划书：</label>
+                    <div class="col-sm-6">
+                        <input type="file" id="bp_url" onChange="uploadFile(this)">
+                    </div>
+                </div>
+                {{ form.bp_url(id='ijiejehyei') }}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="gn">概念阶段预计开发时间：</label>
+                    <div class="col-sm-6">
+                        {{ form.duration(class="form-control", id="gn") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rzqk" class="col-sm-3 control-label">融资情况：</label>
+                    <div class="col-sm-6">
+                        {{ form.financing_status(class="form-control", rows="3", id="rzqk") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="rq">交付日期：</label>
+                    <div class="col-sm-6">
+                        {{ form.deadline(type="date", class="form-control", id="rq") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="lxr">联系人：</label>
+                    <div class="col-sm-6">
+                        {{ form.contact_name(type="text", class="form-control", id="lxr") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="sjh">手机号：</label>
+                    <div class="col-sm-6">
+                        {{ form.contact_phone(type="text", class="form-control", id="sjh") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="yx">邮箱：</label>
+                    <div class="col-sm-6">
+                        {{ form.contact_email(type="text", class="form-control", id="yx") }}
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-info">
+                        提交审核
+                    </button>
+
+                    {% if project.id %}
+                        <a href="{{ url_for('startup.show_project', pid=project.id) }}">
+                            <button type="button" class="btn btn-info" style="padding-left:4%;padding-right:4%">
+                                取消
+                            </button>
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('startup.project_list') }}">
+                            <button type="button" class="btn btn-info" style="padding-left:4%;padding-right:4%">
+                                取消
+                            </button>
+                        </a>
+                    {% endif %}
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-md-12">
+            京审备案
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery-1.11.1.min.js"></script>
+<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../static/js/structure.js"></script>
+<script src="../../static/js/project_edit.js"></script>
+<script src="../../static/js/mark.js"></script>
+<script src="../../static/js/form_upload.js"></script>
+<script>
+    $('#formData').submit(function () {
+        $('input[type=file]').attr('type', 'hidden');
+    });
+</script>
+</body>
+</html>
